@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ChartLine, GameController, Gear, Check } from '@phosphor-icons/react';
 
 const features = [
@@ -65,9 +66,15 @@ export default function FeaturesOverview() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 md:mb-20"
         >
-          <h2 className="heading-lg mb-4">
-            Why Gaming Cafes <br className="md:hidden" />
-            <span className="text-accent-green">Choose ArcadeOS</span>
+          <h2 className="heading-lg mb-4 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-4">
+            <span>Why Gaming Cafes Choose</span>
+            <Image
+              src="/logo.png"
+              alt="ArcadeOS"
+              width={250}
+              height={50}
+              className="w-auto h-10 md:h-12 inline-block"
+            />
           </h2>
           <p className="body-lg max-w-2xl mx-auto text-text-tertiary">
             Everything you need to run a modern gaming cafe, all in one platform
