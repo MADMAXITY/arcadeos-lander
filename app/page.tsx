@@ -1,3 +1,4 @@
+import Navbar from '@/components/ui/Navbar';
 import Hero from '@/components/sections/Hero';
 import FeaturesOverview from '@/components/sections/FeaturesOverview';
 import BentoGrid from '@/components/sections/BentoGrid';
@@ -10,6 +11,7 @@ import Footer from '@/components/sections/Footer';
 export default function Home() {
   return (
     <main className="relative">
+      <Navbar />
       <Hero />
       <FeaturesOverview />
       <BentoGrid />

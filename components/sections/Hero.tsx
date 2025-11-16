@@ -16,7 +16,7 @@ export default function Hero() {
   });
 
   return (
-    <section className="relative min-h-[80vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden bg-bg-primary scanlines noise-texture">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg-primary scanlines noise-texture">
       {/* Particle Background */}
       <ParticleBackground color="#39FF14" particleCount={60} opacity={0.4} speed={0.5} />
 
