@@ -16,7 +16,7 @@ export default function Hero() {
   });
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-bg-primary scanlines noise-texture">
+    <section className="relative min-h-[80vh] md:min-h-[85vh] flex items-center justify-center overflow-hidden bg-bg-primary scanlines noise-texture">
       {/* Particle Background */}
       <ParticleBackground color="#39FF14" particleCount={60} opacity={0.4} speed={0.5} />
 
@@ -73,13 +73,13 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-custom section-padding text-center">
+      <div className="relative z-10 container-custom py-8 sm:py-12 md:py-16 text-center">
         {/* ArcadeOS Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-6 flex justify-center"
+          className="mb-4 flex justify-center"
         >
           <Image
             src="/logo.png"
@@ -87,7 +87,7 @@ export default function Hero() {
             width={600}
             height={120}
             priority
-            className="w-auto h-24 md:h-28 lg:h-32"
+            className="w-auto h-16 md:h-20 lg:h-24"
           />
         </motion.div>
 
@@ -96,7 +96,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="inline-flex items-center gap-2 mb-8 px-6 py-3 rounded-full bg-bg-secondary border border-bg-tertiary pulse-glow-green"
+          className="inline-flex items-center gap-2 mb-6 px-6 py-3 rounded-full bg-bg-secondary border border-bg-tertiary pulse-glow-green"
         >
           <div className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
           <span className="font-inter font-medium text-sm uppercase tracking-wider text-text-secondary">
@@ -109,7 +109,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="heading-xl mb-6"
+          className="heading-xl mb-4"
         >
           The <span className="text-gradient-green">Future</span> of <br className="hidden md:block" />
           <span className="text-gradient-gold">Gaming Cafe</span> Management
@@ -120,7 +120,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="body-lg max-w-3xl mx-auto mb-12"
+          className="body-lg max-w-3xl mx-auto mb-8"
         >
           <span className="text-accent-green font-semibold">Save 15+ hours/week.</span>{' '}
           <span className="text-accent-gold font-semibold">Increase revenue by 30%.</span>
@@ -160,7 +160,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+          className="mt-10 sm:mt-12 md:mt-16 grid grid-cols-3 gap-6 md:gap-8 max-w-2xl mx-auto"
         >
           <motion.div
             className="text-center"
@@ -201,7 +201,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.4 }}
-          className="mt-12"
+          className="mt-6 sm:mt-8"
         >
           <p className="text-text-tertiary text-sm">
             Trusted by <span className="text-accent-green font-semibold">50+ gaming cafes</span> across India
