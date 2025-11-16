@@ -109,22 +109,22 @@ body {
   }
 
   .btn-primary {
-    @apply bg-accent-green text-bg-primary px-8 py-4 rounded-lg font-inter font-semibold text-base uppercase tracking-wide transition-all duration-300 hover:scale-105 hover:glow-green active:scale-95;
+    @apply bg-accent-green text-bg-primary px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-inter font-semibold text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:scale-105 hover:glow-green active:scale-95;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-accent-blue border-2 border-accent-blue px-8 py-4 rounded-lg font-inter font-semibold text-base uppercase tracking-wide transition-all duration-300 hover:bg-accent-blue hover:text-white hover:glow-blue active:scale-95;
+    @apply bg-transparent text-accent-blue border-2 border-accent-blue px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-inter font-semibold text-sm sm:text-base uppercase tracking-wide transition-all duration-300 hover:bg-accent-blue hover:text-white hover:glow-blue active:scale-95;
   }
 }
 
 /* Component Styles */
 @layer components {
   .section-padding {
-    @apply py-24 md:py-32 px-6 md:px-8;
+    @apply py-16 sm:py-20 md:py-24 lg:py-32 px-4 sm:px-6 md:px-8;
   }
 
   .container-custom {
-    @apply max-w-[1400px] mx-auto;
+    @apply max-w-[1400px] mx-auto px-4 sm:px-6;
   }
 
   .heading-xl {

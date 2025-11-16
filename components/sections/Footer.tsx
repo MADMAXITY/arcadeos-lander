@@ -38,8 +38,8 @@ export default function Footer() {
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <div className="mb-4">
+          <div className="lg:col-span-2 text-center md:text-left">
+            <div className="mb-4 flex justify-center md:justify-start">
               <Image
                 src="/logo.png"
                 alt="ArcadeOS Logo"
@@ -48,17 +48,17 @@ export default function Footer() {
                 className="w-auto h-10"
               />
             </div>
-            <p className="body-md text-text-tertiary max-w-sm mb-6">
+            <p className="body-md text-text-tertiary max-w-sm mb-6 mx-auto md:mx-0">
               The Future of Gaming Cafe Management
             </p>
-            <p className="body-sm text-text-muted">
+            <p className="body-sm text-text-muted max-w-sm mx-auto md:mx-0">
               Built for Indian gaming cafes. Automate billing, track games, and
               maximize revenue with our all-in-one platform.
             </p>
           </div>
 
           {/* Product Links */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-rajdhani font-bold text-lg text-text-primary mb-4">
               Product
             </h4>
@@ -77,7 +77,7 @@ export default function Footer() {
           </div>
 
           {/* Company Links */}
-          <div>
+          <div className="text-center md:text-left">
             <h4 className="font-rajdhani font-bold text-lg text-text-primary mb-4">
               Company
             </h4>
