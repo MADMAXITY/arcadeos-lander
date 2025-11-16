@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { inter, rajdhani } from './fonts';
 import './globals.css';
 
@@ -15,11 +15,6 @@ export const metadata: Metadata = {
     'billing software',
   ],
   authors: [{ name: 'ArcadeOS' }],
-  icons: {
-    icon: '/favicon.png',
-    shortcut: '/favicon.png',
-    apple: '/favicon.png',
-  },
   openGraph: {
     title: 'ArcadeOS - The Future of Gaming Cafe Management',
     description:
@@ -33,15 +28,16 @@ export const metadata: Metadata = {
     title: 'ArcadeOS - Gaming Cafe Management Software',
     description: 'The future of gaming cafe management. Coming soon.',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
   robots: {
     index: true,
     follow: true,
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
