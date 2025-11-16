@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CaretDown } from '@phosphor-icons/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
 import ParticleBackground from '../ui/ParticleBackground';
@@ -73,17 +74,21 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 container-custom section-padding text-center">
-        {/* ArcadeOS Logo with Glitch Effect */}
+        {/* ArcadeOS Logo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mb-6"
+          className="mb-6 flex justify-center"
         >
-          <h1 className="font-rajdhani font-bold text-6xl md:text-7xl lg:text-8xl tracking-tight">
-            <span className="text-gradient-green">Arcade</span>
-            <span className="text-text-primary">OS</span>
-          </h1>
+          <Image
+            src="/logo.png"
+            alt="ArcadeOS Logo"
+            width={600}
+            height={120}
+            priority
+            className="w-auto h-24 md:h-28 lg:h-32"
+          />
         </motion.div>
 
         {/* Logo/Badge */}

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   LinkedinLogo,
   TwitterLogo,
@@ -39,9 +40,13 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <div className="mb-4">
-              <h3 className="font-rajdhani font-bold text-2xl text-text-primary">
-                ArcadeOS
-              </h3>
+              <Image
+                src="/logo.png"
+                alt="ArcadeOS Logo"
+                width={200}
+                height={40}
+                className="w-auto h-10"
+              />
             </div>
             <p className="body-md text-text-tertiary max-w-sm mb-6">
               The Future of Gaming Cafe Management

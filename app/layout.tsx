@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     'billing software',
   ],
   authors: [{ name: 'ArcadeOS' }],
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'ArcadeOS - The Future of Gaming Cafe Management',
     description:
