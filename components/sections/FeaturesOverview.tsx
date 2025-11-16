@@ -100,16 +100,39 @@ export default function FeaturesOverview() {
                 />
 
                 <div className="relative z-10 flex flex-col h-full">
-                  {/* Icon */}
-                  <div
-                    className="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-6 transition-all duration-300 group-hover:scale-110"
+                  {/* Icon with Float Animation */}
+                  <motion.div
+                    className="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-6"
                     style={{
                       backgroundColor: `${feature.color}20`,
-                      boxShadow: `0 0 0 0 ${feature.color}00`,
+                    }}
+                    animate={{
+                      y: [0, -10, 0],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                      delay: index * 0.2,
+                    }}
+                    whileHover={{
+                      scale: 1.15,
+                      rotate: [0, -10, 10, 0],
+                      boxShadow: `0 0 20px ${feature.color}60`,
                     }}
                   >
-                    <Icon size={32} weight="bold" color={feature.color} />
-                  </div>
+                    <motion.div
+                      whileHover={{
+                        scale: 1.1,
+                        rotate: 360,
+                      }}
+                      transition={{
+                        rotate: { duration: 0.6, ease: 'easeInOut' },
+                      }}
+                    >
+                      <Icon size={32} weight="bold" color={feature.color} />
+                    </motion.div>
+                  </motion.div>
 
                   {/* Title */}
                   <h3 className="heading-md mb-3">{feature.title}</h3>
@@ -117,20 +140,54 @@ export default function FeaturesOverview() {
                   {/* Description */}
                   <p className="body-md mb-6 flex-grow">{feature.description}</p>
 
-                  {/* Benefits List */}
-                  <ul className="space-y-3 mt-auto">
+                  {/* Benefits List with Staggered Animation */}
+                  <motion.ul
+                    className="space-y-3 mt-auto"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={{
+                      visible: {
+                        transition: {
+                          staggerChildren: 0.1,
+                        },
+                      },
+                    }}
+                  >
                     {feature.benefits.map((benefit, idx) => (
-                      <li key={idx} className="flex items-center gap-2">
-                        <Check
-                          size={20}
-                          weight="bold"
-                          style={{ color: feature.color }}
-                          className="flex-shrink-0"
-                        />
+                      <motion.li
+                        key={idx}
+                        className="flex items-center gap-2"
+                        variants={{
+                          hidden: { opacity: 0, x: -20 },
+                          visible: { opacity: 1, x: 0 },
+                        }}
+                        transition={{
+                          type: 'spring',
+                          stiffness: 100,
+                        }}
+                      >
+                        <motion.div
+                          initial={{ scale: 0, rotate: -180 }}
+                          whileInView={{ scale: 1, rotate: 0 }}
+                          viewport={{ once: true }}
+                          transition={{
+                            delay: idx * 0.1,
+                            type: 'spring',
+                            stiffness: 200,
+                          }}
+                        >
+                          <Check
+                            size={20}
+                            weight="bold"
+                            style={{ color: feature.color }}
+                            className="flex-shrink-0"
+                          />
+                        </motion.div>
                         <span className="body-sm">{benefit}</span>
-                      </li>
+                      </motion.li>
                     ))}
-                  </ul>
+                  </motion.ul>
                 </div>
               </motion.div>
             );

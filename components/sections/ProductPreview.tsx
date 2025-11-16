@@ -67,12 +67,22 @@ export default function ProductPreview() {
                   <Desktop size={48} weight="bold" className="text-accent-green" />
                 </div>
 
-                {/* Badge */}
-                <div className="inline-block px-4 py-2 rounded-full bg-bg-primary border border-accent-green/30 self-center">
+                {/* Badge with Pulse */}
+                <motion.div
+                  className="inline-block px-4 py-2 rounded-full bg-bg-primary border border-accent-green/30 self-center"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
                   <span className="font-inter font-semibold text-xs uppercase tracking-wider text-accent-green">
                     For Gamers
                   </span>
-                </div>
+                </motion.div>
               </div>
 
               {/* Title */}
@@ -86,18 +96,46 @@ export default function ProductPreview() {
                 session tracking. Game detection. Minimal resource usage.
               </p>
 
-              {/* Features List */}
-              <ul className="space-y-3">
+              {/* Features List with Animations */}
+              <motion.ul
+                className="space-y-3"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1,
+                    },
+                  },
+                }}
+              >
                 {desktopFeatures.map((feature, index) => {
                   const Icon = feature.icon;
                   return (
-                    <li key={index} className="flex items-center gap-3">
-                      <Icon size={20} weight="bold" style={{ color: feature.color }} className="flex-shrink-0" />
+                    <motion.li
+                      key={index}
+                      className="flex items-center gap-3"
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0 },
+                      }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 100,
+                      }}
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Icon size={20} weight="bold" style={{ color: feature.color }} className="flex-shrink-0" />
+                      </motion.div>
                       <span className="body-sm">{feature.text}</span>
-                    </li>
+                    </motion.li>
                   );
                 })}
-              </ul>
+              </motion.ul>
             </div>
           </motion.div>
 
@@ -120,12 +158,22 @@ export default function ProductPreview() {
                   <ChartLine size={48} weight="bold" className="text-accent-gold" />
                 </div>
 
-                {/* Badge */}
-                <div className="inline-block px-4 py-2 rounded-full bg-bg-primary border border-accent-gold/30 self-center">
+                {/* Badge with Pulse */}
+                <motion.div
+                  className="inline-block px-4 py-2 rounded-full bg-bg-primary border border-accent-gold/30 self-center"
+                  animate={{
+                    scale: [1, 1.05, 1],
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
                   <span className="font-inter font-semibold text-xs uppercase tracking-wider text-accent-gold">
                     For Owners
                   </span>
-                </div>
+                </motion.div>
               </div>
 
               {/* Title */}
@@ -139,18 +187,46 @@ export default function ProductPreview() {
                 pricing. Generate reports instantly. Access from anywhere.
               </p>
 
-              {/* Features List */}
-              <ul className="space-y-3">
+              {/* Features List with Animations */}
+              <motion.ul
+                className="space-y-3"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1,
+                    },
+                  },
+                }}
+              >
                 {dashboardFeatures.map((feature, index) => {
                   const Icon = feature.icon;
                   return (
-                    <li key={index} className="flex items-center gap-3">
-                      <Icon size={20} weight="bold" style={{ color: feature.color }} className="flex-shrink-0" />
+                    <motion.li
+                      key={index}
+                      className="flex items-center gap-3"
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0 },
+                      }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 100,
+                      }}
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Icon size={20} weight="bold" style={{ color: feature.color }} className="flex-shrink-0" />
+                      </motion.div>
                       <span className="body-sm">{feature.text}</span>
-                    </li>
+                    </motion.li>
                   );
                 })}
-              </ul>
+              </motion.ul>
             </div>
           </motion.div>
         </div>

@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Plus } from '@phosphor-icons/react';
+import TiltCard from '../ui/TiltCard';
 
 const games = [
   {
@@ -96,30 +97,31 @@ export default function GameShowcase() {
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
         >
           {games.map((game, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="group relative rounded-xl overflow-hidden border-2 border-transparent transition-all duration-300 hover:border-accent-green hover:scale-105 hover:shadow-[0_0_30px_rgba(57,255,20,0.3)] cursor-pointer"
-            >
-              {/* Game Image - Twitch-style 3:4 portrait aspect ratio */}
-              <div className="relative aspect-[3/4]">
-                <Image
-                  src={game.image}
-                  alt={game.name}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-                />
+            <motion.div key={index} variants={itemVariants}>
+              <TiltCard
+                className="group relative rounded-xl overflow-hidden border-2 border-transparent transition-all duration-300 hover:border-accent-green/50 cursor-pointer"
+                tiltAmount={5}
+              >
+                {/* Game Image - Twitch-style 3:4 portrait aspect ratio */}
+                <div className="relative aspect-[3/4]">
+                  <Image
+                    src={game.image}
+                    alt={game.name}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
+                  />
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                    <h3 className="font-rajdhani font-bold text-sm md:text-base lg:text-lg text-text-primary leading-tight">
-                      {game.name}
-                    </h3>
+                  {/* Simple Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                      <h3 className="font-rajdhani font-bold text-sm md:text-base lg:text-lg text-text-primary leading-tight">
+                        {game.name}
+                      </h3>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>

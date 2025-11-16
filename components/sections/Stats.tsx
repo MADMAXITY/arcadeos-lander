@@ -74,11 +74,31 @@ export default function Stats() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center group"
               >
-                {/* Icon */}
-                <div
-                  className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-xl mb-4 transition-all duration-300 group-hover:scale-110"
+                {/* Icon with Animation */}
+                <motion.div
+                  className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-xl mb-4"
                   style={{
                     backgroundColor: `${stat.color}20`,
+                  }}
+                  animate={
+                    inView
+                      ? index === 0
+                        ? { y: [0, -10, 0], scale: [1, 1.1, 1] } // Buildings grow
+                        : index === 1
+                        ? { rotateY: [0, 360], scale: [1, 1.05, 1] } // Desktop flip
+                        : index === 2
+                        ? { y: [0, -15, 0], rotate: [0, 10, 0] } // TrendUp arrow up
+                        : { scale: [1, 1.2, 1] } // MapPin drop
+                      : {}
+                  }
+                  transition={{
+                    duration: 2.5,
+                    ease: 'easeInOut',
+                  }}
+                  whileHover={{
+                    scale: 1.15,
+                    rotate: 360,
+                    boxShadow: `0 0 20px ${stat.color}60`,
                   }}
                 >
                   <Icon
@@ -87,7 +107,7 @@ export default function Stats() {
                     style={{ color: stat.color }}
                     className="md:w-10 md:h-10"
                   />
-                </div>
+                </motion.div>
 
                 {/* Number */}
                 <div

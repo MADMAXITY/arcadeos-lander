@@ -54,10 +54,12 @@ The development server is running at: **http://localhost:3001**
    - Intersection observer triggers
 
 7. **Coming Soon CTA**
-   - Email signup form
-   - Success state with animation
+   - Email signup form with Resend integration
+   - Real-time email notifications
+   - Success state with confetti animation
    - Benefits list with checkmarks
    - Spotlight glow effect
+   - Error handling and validation
 
 8. **Footer**
    - Product and company links
@@ -134,12 +136,28 @@ All design rules are documented in `.claude/skills/ui-design.md`:
 
 ## 🚀 Getting Started
 
+### Environment Setup
+1. Copy the example environment file:
+```bash
+cp .env.example .env.local
+```
+
+2. Update `.env.local` with your Resend API credentials:
+```env
+RESEND_API_KEY="your_resend_api_key_here"
+RESEND_TO_EMAIL="your_email@example.com"
+RESEND_FROM_EMAIL="onboarding@resend.dev"
+```
+
+3. Get your Resend API key from [resend.com](https://resend.com/api-keys)
+
 ### Development
 ```bash
 cd arcadeos-landing
+npm install
 npm run dev
 ```
-Open http://localhost:3001
+Open http://localhost:3003
 
 ### Build for Production
 ```bash
@@ -179,24 +197,18 @@ See `.claude/skills/ui-design.md` for:
    - Desktop client interface
    - Admin dashboard interface
 
-2. **Email Integration**
-   - Connect form to email service (e.g., ConvertKit, Mailchimp)
-   - Add form validation
-   - Success/error handling
-
-3. **Performance Optimization**
+2. **Performance Optimization**
    - Convert game images to WebP format
    - Add lazy loading for below-fold content
    - Optimize animation performance
 
-4. **Testing**
+3. **Testing**
    - Test on mobile devices
    - Cross-browser testing
    - Accessibility audit
 
 ### Future Enhancements
 - Add more Aceternity UI components (Background Beams, Aurora)
-- Implement proper email backend
 - Add more game images
 - Create product mockups
 - Add video demo
@@ -213,8 +225,9 @@ See `.claude/skills/ui-design.md` for:
 - **Icons:** Phosphor Icons
 - **Fonts:** Google Fonts (Rajdhani + Inter)
 - **Form:** React hooks
+- **Email:** Resend API
 - **Counter:** react-countup
-- **Utilities:** clsx, tailwind-merge
+- **Utilities:** clsx, tailwind-merge, canvas-confetti
 
 ## 📱 Responsive Design
 
@@ -271,6 +284,70 @@ font-weight: 400 | 500 | 600;
 - HTTPS enforced in production
 - No sensitive data in client-side code
 - Environment variables for API keys
+
+## 🚀 Deployment to Vercel
+
+### Prerequisites
+1. Install Vercel CLI (optional): `npm i -g vercel`
+2. Have a GitHub account
+3. Have a Vercel account (sign up at vercel.com)
+
+### Deployment Steps
+
+**Option 1: Deploy via Vercel Dashboard (Recommended)**
+1. Push code to GitHub repository
+2. Go to [vercel.com](https://vercel.com)
+3. Click "Add New Project"
+4. Import your GitHub repository
+5. Vercel will auto-detect Next.js and configure build settings
+6. Click "Deploy"
+7. Your site will be live in ~2 minutes!
+
+**Option 2: Deploy via CLI**
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy from project directory
+cd arcadeos-landing
+vercel
+
+# Follow prompts:
+# - Link to existing project? No
+# - Project name? arcadeos-landing
+# - Which directory? ./
+# - Override settings? No
+```
+
+### Production Build Settings
+- **Framework Preset:** Next.js
+- **Build Command:** `npm run build`
+- **Output Directory:** `.next`
+- **Install Command:** `npm install`
+- **Development Command:** `npm run dev`
+
+### Environment Variables
+Configure these environment variables in Vercel Dashboard (Settings → Environment Variables):
+
+```
+RESEND_API_KEY=your_resend_api_key_here
+RESEND_TO_EMAIL=your_email@example.com
+RESEND_FROM_EMAIL=onboarding@resend.dev
+```
+
+**Important:** Make sure to add these before deploying, or the waitlist email functionality will not work.
+
+### Custom Domain (Optional)
+1. Go to Project Settings → Domains
+2. Add your custom domain
+3. Configure DNS records as shown
+4. SSL automatically provisioned
+
+### Post-Deployment
+- Site URL: `https://your-project.vercel.app`
+- Auto-deployments enabled for GitHub pushes
+- Preview deployments for pull requests
+- Analytics available in dashboard
 
 ## 📄 License
 

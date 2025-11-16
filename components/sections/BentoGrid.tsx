@@ -8,7 +8,6 @@ import {
   MonitorPlay,
   Trophy,
   ChartBar,
-  WifiSlash,
 } from '@phosphor-icons/react';
 
 const features = [
@@ -92,11 +91,11 @@ export default function BentoGrid() {
             <span className="text-gradient-gold">Every Need</span>
           </h2>
           <p className="body-lg max-w-2xl mx-auto text-text-tertiary">
-            From billing to analytics, we've got you covered
+            From billing to analytics, we&apos;ve got you covered
           </p>
         </motion.div>
 
-        {/* Features Grid */}
+        {/* Features Grid - Equal Size Cards (3x2) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -122,15 +121,48 @@ export default function BentoGrid() {
                 />
 
                 <div className="relative z-10 flex flex-col h-full">
-                  {/* Icon */}
-                  <div
-                    className="inline-flex items-center justify-center w-14 h-14 rounded-lg mb-4 transition-all duration-300 group-hover:scale-110"
+                  {/* Icon with Unique Animations */}
+                  <motion.div
+                    className="inline-flex items-center justify-center w-14 h-14 rounded-lg mb-4"
                     style={{
                       backgroundColor: `${feature.color}20`,
                     }}
+                    whileHover={{
+                      scale: 1.15,
+                      backgroundColor: `${feature.color}40`,
+                      boxShadow: `0 0 20px ${feature.color}60`,
+                    }}
+                    transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <Icon size={28} weight="bold" color={feature.color} />
-                  </div>
+                    <motion.div
+                      animate={
+                        // Unique animation for each icon
+                        index === 0
+                          ? { y: [-2, 2, -2] } // Receipt slides up/down
+                          : index === 1
+                          ? { rotate: [0, 360], scale: [1, 1.1, 1] } // Detective magnify
+                          : index === 2
+                          ? { scale: [1, 1.1, 1] } // Monitor pulse
+                          : index === 3
+                          ? { y: [0, -3, 0] } // Wallet bounce
+                          : index === 4
+                          ? { rotate: [0, -10, 10, 0] } // Trophy shake
+                          : { y: [0, -5, 0] } // ChartBar grow
+                      }
+                      transition={{
+                        duration: index === 1 ? 4 : 2,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                        delay: index * 0.3,
+                      }}
+                      whileHover={{
+                        rotate: index === 1 ? 0 : 360,
+                        transition: { duration: 0.5 },
+                      }}
+                    >
+                      <Icon size={28} weight="bold" color={feature.color} />
+                    </motion.div>
+                  </motion.div>
 
                   {/* Title */}
                   <h3 className="font-rajdhani font-bold text-2xl text-text-primary mb-3">
